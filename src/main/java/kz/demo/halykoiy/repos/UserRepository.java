@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    // Since email is unique, we'll find users by email
-    Optional<User> findByEmail(String email);
+    // Since phone is unique, we'll find users by phone
+    Optional<User> findByPhone(String phone);
 }

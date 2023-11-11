@@ -22,13 +22,14 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String firstName;
-    private String lastName;
     @Column(unique = true)
-    private String email;
+    private String phone;
     private String password;
+    private String name;
+    private Double latitude; // Assuming you have defined this enum
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role; // Assuming you have defined this enum
+    private Double longitude; // Assuming you have defined this enum
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -36,8 +37,8 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        // email in our case
-        return email;
+        // phone in our case
+        return phone;
     }
 
     @Override
