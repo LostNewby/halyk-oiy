@@ -13,6 +13,9 @@ spring:
       hibernate:
         # Format queries
         format_sql: true
+  flyway:
+    enabled: false
+    baseline-on-migrate: true
   datasource:
     url: jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
     driver-class-name: org.postgresql.Driver

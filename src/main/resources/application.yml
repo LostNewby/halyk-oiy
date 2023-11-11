@@ -6,7 +6,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       # New database is created when application starts and destroyed when application is stopped
-      ddl-auto: create-drop
+      ddl-auto: update
     # Show sql when spring data jpa performs query
     show-sql: true
     properties:
@@ -14,9 +14,8 @@ spring:
         # Format queries
         format_sql: true
   flyway:
-    enabled: true
+    enabled: false
     baseline-on-migrate: true
-    baseline-version: 0
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     driver-class-name: org.postgresql.Driver
