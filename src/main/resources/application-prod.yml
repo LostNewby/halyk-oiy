@@ -6,7 +6,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       # New database is created when application starts and destroyed when application is stopped
-      ddl-auto: create-drop
+      ddl-auto: create
     # Show sql when spring data jpa performs query
     show-sql: true
     properties:
