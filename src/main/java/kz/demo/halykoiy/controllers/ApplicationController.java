@@ -13,10 +13,7 @@ import kz.demo.halykoiy.services.ItemService;
 import kz.demo.halykoiy.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -76,7 +73,6 @@ public class ApplicationController {
     }
 
     private User getUserFromRequest(HttpServletRequest request) {
-        UserDetails userDetails = (UserDetails) request.getUserPrincipal();
-        return userService.getUserByPhone(userDetails.getUsername());
+        return userService.getUserByPhone(request.getUserPrincipal().getName());
     }
 }
