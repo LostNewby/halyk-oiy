@@ -17,19 +17,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_user")
+@Table(name = "users")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(unique = true)
     private String phone;
     private String password;
     private String name;
-    private Double latitude; // Assuming you have defined this enum
     @Enumerated(EnumType.STRING)
     private Role role; // Assuming you have defined this enum
-    private Double longitude; // Assuming you have defined this enum
+    private Double latitude;
+    private Double longitude;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
