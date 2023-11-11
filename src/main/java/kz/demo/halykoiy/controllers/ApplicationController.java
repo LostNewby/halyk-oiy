@@ -72,6 +72,16 @@ public class ApplicationController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/radius/average")
+    public ResponseEntity<Double> getAverageTransactionPriceInRadius(Integer distance) {
+        try {
+            return ResponseEntity.ok(incomeInfoService.getAverageTransactionPriceInRadius(distance));
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     private User getUserFromRequest(HttpServletRequest request) {
         return userService.getUserByPhone(request.getUserPrincipal().getName());
     }
