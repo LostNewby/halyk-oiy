@@ -43,7 +43,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(Customizer.withDefaults())
+                .cors().disable()
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request.requestMatchers("/api/v1/auth/**",
                                 "/api/incomeinfo", "/api/items", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html")
@@ -53,17 +53,6 @@ public class SecurityConfiguration {
                         jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("*"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
-
     private SecurityScheme createAPIKeyScheme() {
         return new SecurityScheme().type(SecurityScheme.Type.HTTP)
                 .bearerFormat("JWT")
