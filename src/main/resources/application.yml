@@ -16,6 +16,7 @@ spring:
   flyway:
     enabled: false
     baseline-on-migrate: true
+    clean-disabled: false
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     driver-class-name: org.postgresql.Driver
