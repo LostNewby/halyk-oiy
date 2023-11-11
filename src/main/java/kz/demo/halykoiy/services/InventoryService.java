@@ -3,11 +3,10 @@ package kz.demo.halykoiy.services;
 import kz.demo.halykoiy.entities.Inventory;
 import kz.demo.halykoiy.entities.User;
 import kz.demo.halykoiy.models.InventoryDto;
-import kz.demo.halykoiy.models.ItemDto;
+import kz.demo.halykoiy.models.InventoryOverallDto;
 import kz.demo.halykoiy.repos.InventoryRepository;
 import kz.demo.halykoiy.repos.ItemRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,10 +28,32 @@ public class InventoryService {
         inventoryRepository.save(inventory);
     }
 
-    public List<InventoryDto> getMyInventory(User user) {
-        return inventoryRepository.findInventoriesByUser(user).stream()
-                .map(inventory -> new InventoryDto(inventory.getItem(), inventory.getCount()))
-                .collect(Collectors.toList());
+    public InventoryOverallDto getMyInventory(User user) {
+        return convertToDto(inventoryRepository.findInventoriesByUser(user));
     }
 
+    public InventoryOverallDto convertToDto(List<Inventory> inventories) {
+        double totalPrice = 0;
+        int lowStockCount = 0;
+        int outOfStockCount = 0;
+
+        for (Inventory inventory : inventories) {
+            totalPrice += inventory.getItem().getPrice() * inventory.getCount();
+
+            if (inventory.getCount() < 5) {
+                lowStockCount++;
+            }
+
+            if (inventory.getCount() == 0) {
+                outOfStockCount++;
+            }
+        }
+
+        return InventoryOverallDto.builder()
+                .price(totalPrice)
+                .total(inventories.size())
+                .lowStock(lowStockCount)
+                .outOfStock(outOfStockCount)
+                .build();
+    }
 }

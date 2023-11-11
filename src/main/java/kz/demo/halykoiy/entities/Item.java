@@ -17,7 +17,5 @@ public class Item {
 
     private String name;
     private Double price;
-
-    // Assume there's a 'Sales' entity that connects to this field
-    private Long salesId;
+    private String imageUrl;
 }

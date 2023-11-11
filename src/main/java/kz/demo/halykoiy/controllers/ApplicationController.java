@@ -3,10 +3,7 @@ package kz.demo.halykoiy.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import kz.demo.halykoiy.entities.Role;
 import kz.demo.halykoiy.entities.User;
-import kz.demo.halykoiy.models.IncomeInfoDto;
-import kz.demo.halykoiy.models.InventoryDto;
-import kz.demo.halykoiy.models.ItemDto;
-import kz.demo.halykoiy.models.LocationDto;
+import kz.demo.halykoiy.models.*;
 import kz.demo.halykoiy.services.IncomeInfoService;
 import kz.demo.halykoiy.services.InventoryService;
 import kz.demo.halykoiy.services.ItemService;
@@ -60,7 +57,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/inventory")
-    public List<InventoryDto> getMyInventory(HttpServletRequest request) {
+    public InventoryOverallDto getMyInventory(HttpServletRequest request) {
         return inventoryService.getMyInventory(getUserFromRequest(request));
     }
 
