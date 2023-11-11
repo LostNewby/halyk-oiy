@@ -13,13 +13,13 @@ public class HalykOiyApplication {
         SpringApplication.run(HalykOiyApplication.class, args);
     }
 
-    @Bean
-    public WebMvcConfigurer configure(){
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry reg){
-                reg.addMapping("/**").allowedOrigins("*");
-            }
-        };
-    }
+//    @Bean
+//    public WebMvcConfigurer configure(){
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry reg){
+//                reg.addMapping("/**").allowedOrigins("*");
+//            }
+//        };
+//    }
 }
