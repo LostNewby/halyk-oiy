@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IncomeInfoDto {
-    private Long userId;
     private Double avgTransactionPrice;
     private Double revenueTotal;
     private Double spendingTotal;
@@ -18,5 +17,6 @@ public class IncomeInfoDto {
     private Double salarySpendingTotal;
     private Double resourceSpendingTotal;
     private Double otherSpendingTotal;
+    private Double incomeTotal;
 }
 

@@ -83,9 +83,9 @@ public class ApplicationController {
     }
 
     @GetMapping("/radius/average")
-    public ResponseEntity<Double> getAverageTransactionPriceInRadius(Integer distance) {
+    public List<IncomeInfoDto> getAverageTransactionPriceInRadius(Integer distance) {
         try {
-            return ResponseEntity.ok(incomeInfoService.getAverageTransactionPriceInRadius(distance));
+            return incomeInfoService.getAverageTransactionPriceInRadius(distance);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
             return null;
