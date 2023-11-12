@@ -41,7 +41,7 @@ public class IncomeInfoService {
     }
 
     public List<IncomeInfoDto> getAverageTransactionPriceInRadius(Integer distance) throws IllegalAccessException {
-        User user = userRepository.findByPhone(SecurityUtils.getUserPhoneNumber()).get();
+        User user = userRepository.findByPhone("7754351960").get();
 
         if (!user.getRole().equals(Role.SERVICE)) {
             throw new IllegalAccessException("User has no access to service!");
