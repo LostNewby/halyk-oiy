@@ -55,7 +55,7 @@ public class ApplicationController {
     }
 
     @PostMapping("/inventory")
-    public Message addInventory(@RequestBody InventoryDto inventoryDTO, HttpServletRequest request) {
+    public Message addInventory(@RequestBody InventoryDto inventoryDTO) {
         User user = userService.getUserByPhone("7471445192");
         inventoryService.addInventory(user, inventoryDTO);
         return new Message("SUCCESS");

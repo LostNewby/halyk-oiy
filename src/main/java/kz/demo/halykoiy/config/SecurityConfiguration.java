@@ -51,7 +51,7 @@ public class SecurityConfiguration {
                                 .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                                 .requestMatchers("/api/v1/auth/**",
                                 "/api/incomeinfo", "/api/items", "/v3/api-docs/**", "/swagger-ui/**",
-                                "/swagger-ui.html", "/api/radius/average", "/api/load/image")
+                                "/swagger-ui.html", "/api/radius/average", "/api/load/image", "/api/inventory")
                         .permitAll().anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
