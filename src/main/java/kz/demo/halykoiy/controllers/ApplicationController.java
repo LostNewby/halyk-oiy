@@ -4,11 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import kz.demo.halykoiy.entities.Role;
 import kz.demo.halykoiy.entities.User;
-import kz.demo.halykoiy.models.IncomeInfoDto;
-import kz.demo.halykoiy.models.InventoryDto;
-import kz.demo.halykoiy.models.InventoryOverallDto;
-import kz.demo.halykoiy.models.ItemDto;
-import kz.demo.halykoiy.models.LocationDto;
+import kz.demo.halykoiy.models.*;
 import kz.demo.halykoiy.services.FileService;
 import kz.demo.halykoiy.services.IncomeInfoService;
 import kz.demo.halykoiy.services.InventoryService;
@@ -59,9 +55,9 @@ public class ApplicationController {
     }
 
     @PostMapping("/inventory")
-    public String addInventory(@RequestBody InventoryDto inventoryDTO, HttpServletRequest request) {
+    public Message addInventory(@RequestBody InventoryDto inventoryDTO, HttpServletRequest request) {
         inventoryService.addInventory(getUserFromRequest(request), inventoryDTO);
-        return "SUCCESS";
+        return new Message("SUCCESS");
     }
 
     @GetMapping("/inventory")
