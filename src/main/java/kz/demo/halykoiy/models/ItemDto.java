@@ -11,10 +11,4 @@ public class ItemDto {
     private String name;
     private Double price;
     private String imageUrl;
-
-    public ItemDto(Long uniqueNumber, String name, Double price) {
-        this.uniqueNumber = uniqueNumber;
-        this.name = name;
-        this.price = price;
-    }
 }
