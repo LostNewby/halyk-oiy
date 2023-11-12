@@ -21,6 +21,7 @@ public class ItemService {
         item.setUniqueNumber(itemDto.getUniqueNumber());
         item.setName(itemDto.getName());
         item.setPrice(itemDto.getPrice());
+        item.setImageUrl(itemDto.getImageUrl());
         Item savedItem = itemRepository.save(item);
         return new ItemDto(savedItem.getUniqueNumber(), savedItem.getName(), savedItem.getPrice());
     }
