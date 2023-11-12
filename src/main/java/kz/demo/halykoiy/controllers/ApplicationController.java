@@ -56,13 +56,15 @@ public class ApplicationController {
 
     @PostMapping("/inventory")
     public Message addInventory(@RequestBody InventoryDto inventoryDTO, HttpServletRequest request) {
-        inventoryService.addInventory(getUserFromRequest(request), inventoryDTO);
+        User user = userService.getUserByPhone("7471445192");
+        inventoryService.addInventory(user, inventoryDTO);
         return new Message("SUCCESS");
     }
 
     @GetMapping("/inventory")
-    public InventoryOverallDto getMyInventory(HttpServletRequest request) {
-        return inventoryService.getMyInventory(getUserFromRequest(request));
+    public InventoryOverallDto getMyInventory() {
+        User user = userService.getUserByPhone("7471445192");
+        return inventoryService.getMyInventory(user);
     }
 
     // Set IncomeInfo
