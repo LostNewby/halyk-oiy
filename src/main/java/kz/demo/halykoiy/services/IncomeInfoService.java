@@ -60,14 +60,14 @@ public class IncomeInfoService {
 //        return incomeInfoRepository.getAverageInRadius(neg_new_latitude, pos_new_latitude, neg_new_longitude, pos_new_longitude);
         Random rand = new Random();
         IncomeInfoDto info = new IncomeInfoDto();
-        info.setAvgTransactionPrice(rand.nextDouble(4286.0 - 847.0) + 847.0);
-        info.setRevenueTotal(rand.nextDouble(988890.0 - 49085.0) + 49085.0);
-        info.setOtherSpendingTotal(rand.nextDouble(753241.0 - 177548.0) + 177548.0);
-        info.setMarketingSpendingTotal(rand.nextDouble(854700.0 - 301792.0) + 301792.0);
-        info.setSpendingTotal(rand.nextDouble(1023420.0 - 544486.0) + 544486.0);
-        info.setResourceSpendingTotal(rand.nextDouble(198096.0 - 32227.0) + 32227.0);
-        info.setSalarySpendingTotal(rand.nextDouble(99821.0 - 56996.0) + 56996.0);
-        info.setIncomeTotal(rand.nextDouble(129821.0 - 38996.0) + 38996.0);
+        info.setAvgTransactionPrice(rand.nextDouble(10000.0 - 1000.0) + 1000.0);
+        info.setRevenueTotal(rand.nextDouble(999999.0 - 666666.0) + 666666.0);
+        info.setOtherSpendingTotal(rand.nextDouble(222222.0 - 100000.0) + 100000.0);
+        info.setMarketingSpendingTotal(rand.nextDouble(222222.0 - 50000.0) + 50000.0);
+        info.setSpendingTotal(rand.nextDouble(1023420.0 - 666666.0) + 666666.0);
+        info.setResourceSpendingTotal(rand.nextDouble(222222.0 - 32227.0) + 32227.0);
+        info.setSalarySpendingTotal(rand.nextDouble(222222.0 - 150000.0) + 150000.0);
+        info.setIncomeTotal(rand.nextDouble(129821.0 - 100000.0) + 100000.0);
         ArrayList<IncomeInfoDto> res = new ArrayList<>();
         IncomeInfo mine = incomeInfoRepository.findById(9L).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         IncomeInfoDto minetoo = IncomeInfoDto.builder()
