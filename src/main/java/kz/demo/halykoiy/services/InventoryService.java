@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,6 +37,7 @@ public class InventoryService {
         double totalPrice = 0;
         int lowStockCount = 0;
         int outOfStockCount = 0;
+        int total = 0;
 
         for (Inventory inventory : inventories) {
             totalPrice += inventory.getItem().getPrice() * inventory.getCount();
@@ -47,11 +49,15 @@ public class InventoryService {
             if (inventory.getCount() == 0) {
                 outOfStockCount++;
             }
+
+            if (Objects.nonNull(inventory.getCount())) {
+                total+=inventory.getCount();
+            }
         }
 
         return InventoryOverallDto.builder()
                 .price(totalPrice)
-                .total(inventories.size())
+                .total(total)
                 .lowStock(lowStockCount)
                 .outOfStock(outOfStockCount)
                 .build();
