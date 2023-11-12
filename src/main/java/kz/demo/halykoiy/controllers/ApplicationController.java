@@ -59,9 +59,9 @@ public class ApplicationController {
     }
 
     @PostMapping("/inventory")
-    public ResponseEntity<?> addInventory(@RequestBody InventoryDto inventoryDTO, HttpServletRequest request) {
+    public String addInventory(@RequestBody InventoryDto inventoryDTO, HttpServletRequest request) {
         inventoryService.addInventory(getUserFromRequest(request), inventoryDTO);
-        return ResponseEntity.ok().build();
+        return "SUCCESS";
     }
 
     @GetMapping("/inventory")
