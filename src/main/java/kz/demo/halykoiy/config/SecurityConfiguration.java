@@ -12,6 +12,7 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import kz.demo.halykoiy.services.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -43,9 +44,12 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors().disable()
+                .cors(Customizer.withDefaults())
                 .csrf().disable()
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/v1/auth/**",
+                .authorizeHttpRequests(
+                        request -> request
+                                .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                                .requestMatchers("/api/v1/auth/**",
                                 "/api/incomeinfo", "/api/items", "/v3/api-docs/**", "/swagger-ui/**",
                                 "/swagger-ui.html", "/api/radius/average", "/api/load/image")
                         .permitAll().anyRequest().authenticated())
